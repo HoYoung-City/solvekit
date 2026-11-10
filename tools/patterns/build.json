@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "id": "build",
+  "title": "사용자 흐름을 갖는 결과물 구현",
+  "intent": "입력부터 사용자 결과까지 작동하는 흐름을 완성한다",
+  "status": "seed",
+  "applicable_when": [
+    "사용자가 수행할 작업과 기대 출력이 있다",
+    "작동하는 결과물의 구현이 필요하다"
+  ],
+  "avoid_when": [
+    "핵심 목표가 아직 없고 기능 목록만 있다"
+  ],
+  "phases": {
+    "frame": "문제와 구조 파악",
+    "baseline": "최소 전체 결과 확보",
+    "refine": "약점 분해와 개선",
+    "validate": "전체 재검증과 설명"
+  },
+  "variation_points": [
+    "도메인 용어와 입력 형식",
+    "첫 전체 결과의 형태",
+    "평가 기준",
+    "세부 작업의 수와 의존관계",
+    "사용할 도구와 데이터",
+    "실행 가능한 시간"
+  ],
+  "steps": [
+    {
+      "id": "frame",
+      "label": "목표와 성공 기준 정의",
+      "phase": "frame",
+      "depends_on": [],
+      "inputs": [
+        "문제 원문",
+        "제약",
+        "사용자 판단"
+      ],
+      "output": "목표·성공 기준·사실·가정·모르는 점",
+      "acceptance": "출력의 유용성을 판단할 기준이 있다",
+      "writes": [
+        "problem-definition"
+      ]
+    },
+    {
+      "id": "structure",
+      "label": "입력과 결과의 관계 도식화",
+      "phase": "frame",
+      "depends_on": [
+        "frame"
+      ],
+      "inputs": [
+        "확인된 사실",
+        "대표 입력"
+      ],
+      "output": "입력·처리·결과·제약의 관계도",
+      "acceptance": "주요 연결을 설명하고 미확인 연결을 표시한다",
+      "writes": [
+        "structure"
+      ]
+    },
+    {
+      "id": "baseline",
+      "label": "단순한 전체 해법 완성",
+      "phase": "baseline",
+      "depends_on": [
+        "structure"
+      ],
+      "inputs": [
+        "문제 정의",
+        "관계도"
+      ],
+      "output": "대표 입력 하나가 실제 처리 경로를 거쳐 최종 결과로 나오는 최소 구현",
+      "acceptance": "핵심 사용자 흐름이 실행되고 결과와 실패 원인을 확인할 수 있다",
+      "writes": [
+        "baseline"
+      ]
+    },
+    {
+      "id": "baseline-check",
+      "label": "첫 결과의 약점 확인",
+      "phase": "baseline",
+      "depends_on": [
+        "baseline"
+      ],
+      "inputs": [
+        "전체 결과",
+        "성공 기준"
+      ],
+      "output": "현재 결과와 가장 중요한 부족점",
+      "acceptance": "다음 개선이 전체 목표에 필요한 이유가 설명된다",
+      "writes": [
+        "baseline-evaluation"
+      ]
+    },
+    {
+      "id": "core",
+      "label": "핵심 처리의 약점 개선",
+      "phase": "refine",
+      "depends_on": [
+        "baseline-check"
+      ],
+      "inputs": [
+        "첫 결과",
+        "지정된 부족점"
+      ],
+      "output": "핵심 처리 개선과 재현 가능한 검증",
+      "acceptance": "변경 또는 발견의 근거와 한계를 확인한다",
+      "writes": [
+        "core"
+      ]
+    },
+    {
+      "id": "experience",
+      "label": "사용·설명 흐름의 약점 개선",
+      "phase": "refine",
+      "depends_on": [
+        "baseline-check"
+      ],
+      "inputs": [
+        "첫 결과",
+        "지정된 부족점"
+      ],
+      "output": "사용자가 이해할 수 있는 결과와 오류 안내",
+      "acceptance": "변경 또는 발견의 근거와 한계를 확인한다",
+      "writes": [
+        "experience"
+      ]
+    },
+    {
+      "id": "integrate",
+      "label": "개선 내용을 전체 해법에 통합",
+      "phase": "refine",
+      "depends_on": [
+        "core",
+        "experience"
+      ],
+      "inputs": [
+        "개별 작업 결과",
+        "기존 전체 결과"
+      ],
+      "output": "일관된 통합 결과",
+      "acceptance": "정의 충돌을 해결하고 기존 결과를 보존한다",
+      "writes": [
+        "integrated-result"
+      ]
+    },
+    {
+      "id": "validate",
+      "label": "최초 목표에 대한 전체 재검증",
+      "phase": "validate",
+      "depends_on": [
+        "integrate"
+      ],
+      "inputs": [
+        "통합 결과",
+        "동일한 평가 기준"
+      ],
+      "output": "개선 전후 비교와 남은 한계",
+      "acceptance": "부분 개선이 전체 목표에 도움이 되는지 근거로 판단한다",
+      "writes": [
+        "global-validation"
+      ]
+    },
+    {
+      "id": "explain",
+      "label": "사람이 이해할 수 있게 설명",
+      "phase": "validate",
+      "depends_on": [
+        "validate"
+      ],
+      "inputs": [
+        "결론",
+        "검증 근거"
+      ],
+      "output": "결론·효과·근거·한계 및 다음 행동",
+      "acceptance": "입력부터 결론까지의 선택과 근거를 설명할 수 있다",
+      "writes": [
+        "explanation"
+      ]
+    }
+  ]
+}
