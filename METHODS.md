@@ -72,6 +72,8 @@ flowchart TD
 
 ## 개념 참고
 
+원문을 기본적으로 열람하지 마세요.
+
 - [사례 기반 추론](https://www.iiia.csic.es/~enric/papers/Aamodt_1994_Case.pdf): 경험의 검색·재사용·수정·보존.
 - [NASA Systems Engineering Handbook](https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf): 분해와 전체 목적에 대한 검증.
 - [Template Method](https://learn.microsoft.com/en-us/shows/visual-studio-toolbox/design-patterns-template-method), [Strategy](https://learn.microsoft.com/en-us/shows/visual-studio-toolbox/design-patterns-strategy): 공통 구조와 변경할 부분의 분리.
